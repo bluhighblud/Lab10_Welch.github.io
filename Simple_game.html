@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang = "en-US">
+<head>
+        <script type = "text/javascript"
+        src = "simple game.js"></script>
+</head>
+</html><!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>car.html</title>
+    <script type="text/javascript"
+            src = "simple_game.js"></script>
+    <script type="text/javascript">
+    var scene;
+    var car;
+    
+    function init(){
+        scene = new Scene();
+        car = new Sprite(scene, "car.png", 50, 30);
+        car.setAngle(270);
+        car.setSpeed(0);
+        scene.start();
+    }
+    
+    function update(){
+        scene.clear();
+        var maxSpeed = 25
+
+        if (keysDown[K_LEFT]){
+            car.changeAngleBy(-5);
+        }
+        
+        if (keysDown[K_RIGHT]){
+            car.changeAngleBy(5);
+        }
+        
+        if (keysDown[K_UP]){
+            car.changeSpeedBy(1);
+            if (car.speed >= maxSpeed)
+            {
+                    car.setSpeed(maxSpeed);
+            }
+        }
+        
+        if (keysDown[K_DOWN]){
+            car.changeSpeedBy(-1);
+            if (car.speed <= -maxSpeed)
+            {
+                    car.setSpeed(-maxSpeed);
+            }
+        }
+        
+        car.update();
+    }
+    </script>
+</head>
+<body onload = "init()">
+    <h1>Drive the car.</h1>
+</body>
+</html>
